@@ -1,7 +1,17 @@
 # puppet-hiera-regex
+I got it working in Puppet 7 Community edition. This module will use regex in a hiera file to match your configured parameter in hiera. Example used below is %{::trusted.certname}. This could be anything.
 
-This code is split out from wmflib ( https://phabricator.wikimedia.org/source/operations-puppet/browse/production/modules/wmflib/ )
-With small adjustment to the the module, I got it working in Puppet 7 Community edition
+This project splits out wmflib where it is included as a part of a bigger puppet setup for wikimedia, I found it usefull to extract it and reuse it as a smaller module.
+See https://phabricator.wikimedia.org/source/operations-puppet/browse/production/modules/wmflib/ for the full version of their module.
+
+After looking into https://github.com/jjulien/hiera-regex
+I found out that jjulien's module was not working for the new Hiera and how it now uses different backends. I knew I needed something a bit better included in the hiera to allow for regex.
+With small adjustment to the the module I got this working perfectly to match hostnames based on regex.
+
+# requirements:
+- Puppet 7
+- Hiera
+- Puppetfile w/r10k
 
 ## hiera.yaml examples
 ```
